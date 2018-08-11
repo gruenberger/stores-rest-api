@@ -14,10 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know when changes were 
 app.secret_key = 'andrew'
 api = Api(app)
 
-@app.before_first_request
-def make_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # /auth
 
 api.add_resource(Item, '/item/<string:name>')
